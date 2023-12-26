@@ -76,7 +76,7 @@ public class Page { // 페이징을 관리하는 클래스
 		return next;
 	}
 	
-	private void dataCalc() {
+	private void dataCalc() { //페이징 계산 메소드
 
 		// 마지막 번호
 		endPageNum = (int) (Math.ceil((double) num / (double) pageNumCnt) * pageNumCnt);
