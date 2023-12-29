@@ -7,9 +7,9 @@
 	<!-- 게시물 목록 --> <!-- 테이블을 찾을 수 없다면, (데이버베이스.테이블) -->
 	<select id="list" resultType="com.board.domain.BoardVO">  <!-- resultType는 데이터를 쿼리를 실행한 뒤 결과가 있을 경우에 사용 -->
 		select
-		bno, title, content, writer, regDate, viewCnt
+			bno, title, content, writer, regDate, viewCnt
 		from
-		board.tbl_board
+			board.tbl_board
 	</select>
 
 	<!-- 게시물 작성 -->
@@ -20,17 +20,24 @@
 	</insert>
 
 	<!-- parameterType는 입력받는 데이터, resultType는 출력할 데이터 -->
-	<!-- 게시물 조회 -->		<!-- 정수(int)형인 게시물 번호를 보내고, 게시물의 데이터형인 BoardVO를 내보내게됩니다. 출력할 데이터란, 쿼리문이 실행된 
-		결과 -->
+	<!-- 게시물 조회 -->		<!-- 정수(int)형인 게시물 번호를 보내고, 게시물의 데이터형인 BoardVO를 내보내게됩니다. 출력할 데이터란, 쿼리문이 실행된 결과 -->
 	<select id="view" parameterType="int"
 		resultType="com.board.domain.BoardVO">
 		select
-		bno, title, content, writer, regDate, viewCnt
+			bno, title, content, writer, regDate, viewCnt
 		from
-		board.tbl_board
+			board.tbl_board
 		where
-		bno = #{bno}
+			bno = #{bno} <!-- 해당 게시글 번호 -->
 	</select>
+	
+	<!-- 게시물 조회수 하나 올리는 쿼리 -->	
+	<update id="viewCount" parameterType="com.board.domain.BoardVO">
+		update board.tbl_board
+			set 
+				viewCnt = viewCnt + 1
+			where bno = #{bno}  <!-- 해당 게시글 번호 -->
+	</update>
 
 	<!-- 게시물 수정 -->
 	<update id="modify" parameterType="com.board.domain.BoardVO">
@@ -53,6 +60,28 @@
 	<select id="count" resultType="int">
 		select count(bno) from board.tbl_board
 	</select>
+
+	<!-- 게시물 총 갯수 + 검색 적용 -->
+	<select id="searchCount" parameterType="hashMap" resultType="int">
+		select count(bno) from board.tbl_board
+		
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%', #{keyword}, '%')
+				or content LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("writer")'>
+			WHERE writer LIKE concat('%', #{keyword}, '%')
+		</if>
+	</select>
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap" resultType="com.board.domain.BoardVO">
@@ -62,5 +91,32 @@
 	 order by bno desc
 	 	limit #{displayPost}, #{postNum}
 	</select>
+
+	<!-- 게시물 목록 + 페이징 + 검색 -->
+	<select id="listPageSearch" parameterType="hashMap" resultType="com.board.domain.BoardVO">
+		select
+			bno, title, writer, regDate, viewCnt
+		from board.tbl_board
+
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%', #{keyword}, '%')
+				or content LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("writer")'>
+			WHERE writer LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		order by bno desc
+			limit #{displayPost}, #{postNum}
+	</select> 
 	
 </mapper>

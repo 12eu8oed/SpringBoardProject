@@ -24,6 +24,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		return "redirect:/board/listPage?num=1";
+		return "redirect:/board/listPageSearch?num=1";
+//		return "home";
 	}
 }

@@ -43,7 +43,7 @@ public class BoardController {
 	public String postWrite(BoardVO vo) throws Exception {
 		service.write(vo);
 		
-		return "redirect:/board/listPage?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
+		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
 		// 왜 그냥 url 쓰면 안되나? redirect를 사용해야 하는 이유는?
 	}
 
@@ -80,7 +80,7 @@ public class BoardController {
 	public String getDelete(@RequestParam("bno") int bno) throws Exception {
 		
 		service.delete(bno);
-		return "redirect:/board/listPage?num=1";
+		return "redirect:/board/listPageSearch?num=1";
 		
 	}
 	
@@ -172,24 +172,40 @@ public class BoardController {
 	}
 	// 게시물 목록 + 페이징 추가 + 검색
 	@RequestMapping(value = "/listPageSearch", method = RequestMethod.GET)
-	public void getListPageSearch(Model model, @RequestParam("num") int num) throws Exception {
-
+	public void getListPageSearch(Model model, @RequestParam("num") int num, 
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) throws Exception {
+		//value 받고자할 데이터의 키 required는 해당 데이터의 필수여부, defaultValue는 만약 데이터가 들어오지 않았을 경우 대신하는 기본값
+		
 		Page page = new Page();
 
 		page.setNum(num);
-		page.setCount(service.count());
+//		page.setCount(service.count());
+		page.setCount(service.searchCount(searchType, keyword));
 
+		// 검색 타입과 검색어
+//		page.setSearchTypeKeyword(searchType, keyword);
+		page.setSearchType(searchType);
+		page.setKeyword(keyword);
+		
 		List<BoardVO> list = null;
-		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+//		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+		list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
 
 		model.addAttribute("list", list);
-		
-		//page 데이터 전부를 view로 전달한다.
+
+		// page 데이터 전부를 view로 전달한다.
 		model.addAttribute("page", page);
-		
-		//현재 페이지
+
+		// 현재 페이지
 		model.addAttribute("select", num);
-		
+
+//		// 검색할 타입
+//		model.addAttribute("searchType", searchType);
+//
+//		// 검색어
+//		model.addAttribute("keyword", keyword);
+
 	}
 
 }
