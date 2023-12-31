@@ -19,7 +19,7 @@
 	<%@ include file="../include/nav.jsp" %>  
 </div>
 
-<div class="container mt-4">
+<div class="container mt-4"> 
 	<table class="table table-striped">
 		<thead class="thead-dark">
 			<tr>
