@@ -21,23 +21,29 @@
 
 	<!-- parameterType는 입력받는 데이터, resultType는 출력할 데이터 -->
 	<!-- 게시물 조회 -->		<!-- 정수(int)형인 게시물 번호를 보내고, 게시물의 데이터형인 BoardVO를 내보내게됩니다. 출력할 데이터란, 쿼리문이 실행된 결과 -->
-	<select id="view" parameterType="int"
-		resultType="com.board.domain.BoardVO">
+<!-- 	<select id="view" parameterType="int" -->
+<!-- 		resultType="com.board.domain.BoardVO"> -->
+<!-- 		select -->
+<!-- 			bno, title, content, writer, regDate, viewCnt -->
+<!-- 		from -->
+<!-- 			board.tbl_board -->
+<!-- 		where -->
+<!-- 			bno = #{bno} 해당 게시글 번호 -->
+<!-- 	</select> -->
+
+	<!-- 게시물 조회 -->
+	<select id="view" parameterType="int" resultType="com.board.domain.BoardVO">
 		select
-			bno, title, content, writer, regDate, viewCnt
+			b.bno, b.title, b.content, b.writer, b.regDate, vc.viewCnt
 		from
-			board.tbl_board
-		where
-			bno = #{bno} <!-- 해당 게시글 번호 -->
+			board.tbl_board b
+		join board.tbl_view_count vc on b.bno = vc.bno
+			where
+		b.bno = #{bno}
 	</select>
-	
-	<!-- 게시물 조회수 하나 올리는 쿼리 -->	
-	<update id="viewCount" parameterType="com.board.domain.BoardVO">
-		update board.tbl_board
-			set 
-				viewCnt = viewCnt + 1
-			where bno = #{bno}  <!-- 해당 게시글 번호 -->
-	</update>
+
+
+
 
 	<!-- 게시물 수정 -->
 	<update id="modify" parameterType="com.board.domain.BoardVO">
