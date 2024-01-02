@@ -27,7 +27,7 @@
 				<th>제목</th>
 				<th>작성일</th>
 				<th>작성자</th>
-<!-- 				<th>조회수</th> -->
+				<th>조회수</th>
 			</tr>
 		</thead>
 		
@@ -43,7 +43,7 @@
 							<fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd hh:mm:ss" /> <!-- 연도 날짜 시 분 초 -->
 						</td>
 						<td>${list.writer}</td>
-<%-- 						<td>${list.viewCnt}</td> --%>
+						<td>${list.viewCnt}</td>
 					</tr>
 				</c:forEach>
 	
