@@ -30,6 +30,12 @@ public class BoardController {
 		list = service.list();
 		model.addAttribute("list", list);
 	}
+	
+	// 게시글 작성후 게시글 목록으로 보낼때 
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public void newviewCountInviewCountBoard(Model model, BoardVO vo) throws Exception {
+		service.newviewCountInviewCountBoard(vo);
+	}
 
 	// 게시글 작성 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
@@ -49,6 +55,7 @@ public class BoardController {
 		vo.setContent(content);
 		
 		service.write(vo);
+		
 		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
 		// 왜 그냥 url 쓰면 안되나? redirect를 사용해야 하는 이유는?
 	}

@@ -25,6 +25,7 @@
 	    	(bno, viewCnt)
 		VALUES
 			(#{bno}, 0)
+			
 	</insert>
 	
 	<!-- parameterType는 입력받는 데이터, resultType는 출력할 데이터 -->

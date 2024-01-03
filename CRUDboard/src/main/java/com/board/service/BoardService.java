@@ -11,6 +11,9 @@ public interface BoardService {
 	
 	//게시물 작성
 	public void write(BoardVO vo) throws Exception;
+	
+	// 새로운 게시글이 작성되면 조회수 테이블에 입력을 한다. 그 번호와 조회수 초기화 진행
+	public void newviewCountInviewCountBoard(BoardVO vo) throws Exception;
 		
 	// 게시물 조회
 	public BoardVO view(int bno) throws Exception;

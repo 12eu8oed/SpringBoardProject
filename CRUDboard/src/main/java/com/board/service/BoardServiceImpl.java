@@ -27,6 +27,12 @@ public class BoardServiceImpl implements BoardService { // 정보 전달 용도
 	public void write(BoardVO vo) throws Exception {
 		dao.write(vo);
 	}
+	
+	// 새로운 게시글이 작성되면 조회수 테이블에 입력을 한다. 그 번호와 조회수 초기화 진행
+	@Override
+    public void newviewCountInviewCountBoard(BoardVO vo) throws Exception {
+        dao.newviewCountInviewCountBoard(vo);
+    }
 
 	// 게시물 조회
 	@Override

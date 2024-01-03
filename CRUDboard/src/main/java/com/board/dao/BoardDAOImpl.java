@@ -30,6 +30,12 @@ public class BoardDAOImpl implements BoardDAO { // Implement 구현하다 BoardD
 	public void write(BoardVO vo) throws Exception {
 		sql.insert(namespace + ".write", vo);
 	}
+	
+	// 새로운 게시글이 작성되면 조회수 테이블에 입력을 한다. 그 번호와 조회수 초기화 진행
+	@Override
+    public void newviewCountInviewCountBoard(BoardVO vo) throws Exception {
+        sql.insert(namespace+ ".newviewCountinviewCountboard", vo);
+    }
 
 	// 게시물 조회
 	@Override
