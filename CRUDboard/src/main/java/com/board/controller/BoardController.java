@@ -24,18 +24,21 @@ public class BoardController {
 	// 게시물 목록
 	// GET 방식은 서버에서 정보를 조회할 때 주로 쓰이고, POST 방식은 정보를 수정하거나 입력할 때 사용
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void getList(Model model) throws Exception { // Model은 컨트롤러(Controller)와 뷰(View)를 연결해주는 역할을 합니다.
-
+	public void getList(Model model, BoardVO vo) throws Exception { // Model은 컨트롤러(Controller)와 뷰(View)를 연결해주는 역할을 합니다.
 		List list = null;
 		list = service.list();
 		model.addAttribute("list", list);
 	}
 	
-	// 게시글 작성후 게시글 목록으로 보낼때 
-	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public void newviewCountInviewCountBoard(Model model, BoardVO vo) throws Exception {
-		service.newviewCountInviewCountBoard(vo);
-	}
+//	// 새 게시물이  등록 되고 게시글 목록으로 돌아갈 때 새 글번호를 viewCount에 넣어준다.
+//	@RequestMapping(value = "/list", method = RequestMethod.POST)
+//	public String newviewCountGolist(Model model, BoardVO vo) throws Exception {
+//		
+//		service.newviewCountGolist(vo);
+//
+//		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
+//		// 왜 그냥 url 쓰면 안되나? redirect를 사용해야 하는 이유는?
+//	}
 
 	// 게시글 작성 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
@@ -55,7 +58,7 @@ public class BoardController {
 		vo.setContent(content);
 		
 		service.write(vo);
-		
+		service.newviewCountGolist(vo);
 		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
 		// 왜 그냥 url 쓰면 안되나? redirect를 사용해야 하는 이유는?
 	}

@@ -12,6 +12,15 @@
 			board.tbl_board
 	</select>
 
+
+	<!-- 새 게시물이  등록 되고 게시글 목록으로 돌아갈 때 새 글번호를 viewCount에 넣어준다.-->
+	<insert id="newviewCountGolist" parameterType="com.board.domain.BoardVO">
+		INSERT INTO board.tbl_view_count 
+			(bno, viewCnt)
+		VALUES
+			((SELECT MAX(bno) FROM board.tbl_board), 0)
+	</insert>
+
 	<!-- 게시물 작성 -->
 	<insert id="write" parameterType="com.board.domain.BoardVO">
 	    insert into 
@@ -20,13 +29,12 @@
 	</insert>
 	
 	<!-- 새로운 게시글이 작성되면 조회수 테이블에 입력을 한다. 그 번호와 조회수 초기화 진행 -->
-	<insert id="newviewCountinviewCountboard" parameterType="com.board.domain.BoardVO">
-	    INSERT INTO board.tbl_view_count 
-	    	(bno, viewCnt)
-		VALUES
-			(#{bno}, 0)
-			
-	</insert>
+<!-- 	<insert id="newviewCountinviewCountboard" parameterType="com.board.domain.BoardVO"> -->
+<!-- 	    INSERT INTO board.tbl_view_count  -->
+<!-- 	    	(bno, viewCnt) -->
+<!-- 		VALUES -->
+<!-- 			(#{bno}, 0) -->
+<!-- 	</insert> -->
 	
 	<!-- parameterType는 입력받는 데이터, resultType는 출력할 데이터 -->
 	<!-- 게시물 조회 -->		<!-- 정수(int)형인 게시물 번호를 보내고, 게시물의 데이터형인 BoardVO를 내보내게됩니다. 출력할 데이터란, 쿼리문이 실행된 결과 -->
@@ -42,13 +50,6 @@
 
 	<!-- 게시물 조회 -->
 	<select id="view" parameterType="int" resultType="com.board.domain.BoardVO">
-<!-- 		select -->
-<!-- 			* -->
-<!-- 		from -->
-<!-- 			board.tbl_board  -->
-<!-- 		where -->
-<!-- 			bno = #{bno} -->
-		
 		select
 			b.bno, b.title, b.content, b.writer, b.regDate, vc.viewCnt
 		from
@@ -56,6 +57,13 @@
 		join board.tbl_view_count vc on b.bno = vc.bno
 			where
 		b.bno = #{bno}
+<!-- 		select -->
+<!-- 			* -->
+<!-- 		from -->
+<!-- 			board.tbl_board  -->
+<!-- 		where -->
+<!-- 			bno = #{bno} -->
+		
 	</select>
 	
 	<!-- 게시물 조회수 하나 올리는 쿼리 -->
