@@ -29,16 +29,6 @@ public class BoardController {
 		list = service.list();
 		model.addAttribute("list", list);
 	}
-	
-//	// 새 게시물이  등록 되고 게시글 목록으로 돌아갈 때 새 글번호를 viewCount에 넣어준다.
-//	@RequestMapping(value = "/list", method = RequestMethod.POST)
-//	public String newviewCountGolist(Model model, BoardVO vo) throws Exception {
-//		
-//		service.newviewCountGolist(vo);
-//
-//		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
-//		// 왜 그냥 url 쓰면 안되나? redirect를 사용해야 하는 이유는?
-//	}
 
 	// 게시글 작성 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
