@@ -4,10 +4,9 @@ CREATE TABLE `tbl_board` (
 	`content` TEXT NOT NULL COLLATE 'utf8mb3_general_ci',
 	`writer` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_general_ci',
 	`regDate` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
-	`viewCnt` INT(11) NULL DEFAULT '0',
 	PRIMARY KEY (`bno`) USING BTREE
 )
 COLLATE='utf8mb3_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=1722
+AUTO_INCREMENT=1723
 ;
