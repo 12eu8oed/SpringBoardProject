@@ -47,6 +47,12 @@ public class BoardServiceImpl implements BoardService { // 정보 전달 용도
 
 		dao.modify(vo);
 	}
+	
+	// 게시물 조회수 하나 올리는 쿼리
+	@Override
+	public void AddviewCountOne(BoardVO vo) throws Exception {
+		dao.AddviewCountOne(vo);
+	}
 
 	// 게시물 삭제
 	@Override
@@ -79,5 +85,4 @@ public class BoardServiceImpl implements BoardService { // 정보 전달 용도
 	public int searchCount(String searchType, String keyword) throws Exception {
 		return dao.searchCount(searchType, keyword);
 	}
-
 }

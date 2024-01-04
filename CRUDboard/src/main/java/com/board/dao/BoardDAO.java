@@ -20,6 +20,9 @@ public interface BoardDAO {
 	// 게시물 수정
 	public void modify(BoardVO vo) throws Exception;
 
+	// 게시물 조회수 하나 올리는 쿼리
+	public void AddviewCountOne(BoardVO vo) throws Exception;
+
 	// 게시뮬 삭제
 	public void delete(int bno) throws Exception;
 

@@ -17,7 +17,7 @@
 <!-- 			board.tbl_board -->
 	</select>
 
-	<!-- 새 게시물이  등록 되고 게시글 목록으로 돌아갈 때 새 글번호를 viewCount에 넣어준다.-->
+	<!--  때 새 글번호새 게시물이  등록 되고 게시글 목록으로 돌아갈를 viewCount에 넣어준다.-->
 	<insert id="newviewCountGolist" parameterType="com.board.domain.BoardVO">
 		INSERT INTO board.tbl_view_count 
 			(bno, viewCnt)
@@ -67,11 +67,10 @@
 <!-- 			board.tbl_board  -->
 <!-- 		where -->
 <!-- 			bno = #{bno} -->
-		
 	</select>
 	
 	<!-- 게시물 조회수 하나 올리는 쿼리 -->
-	<update id="viewCount" parameterType="com.board.domain.BoardVO">
+	<update id="AddviewCountOne" parameterType="com.board.domain.BoardVO">
 	    update board.tbl_view_count
 	        set 
 	            viewCnt = viewCnt + 1

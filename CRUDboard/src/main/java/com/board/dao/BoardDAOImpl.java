@@ -44,6 +44,12 @@ public class BoardDAOImpl implements BoardDAO { // Implement 구현하다 BoardD
 
 	}
 
+	// 게시물 조회수 하나 올리는 쿼리
+	@Override
+	public void AddviewCountOne(BoardVO vo) throws Exception {
+		sql.update(namespace + ".AddviewCountOne", vo);
+	}
+	
 	// 게시물 수정
 	@Override
 	public void modify(BoardVO vo) throws Exception {
@@ -100,5 +106,4 @@ public class BoardDAOImpl implements BoardDAO { // Implement 구현하다 BoardD
 		return sql.selectOne(namespace + ".searchCount", data);
 
 	}
-
 }

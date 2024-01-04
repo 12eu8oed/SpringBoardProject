@@ -20,6 +20,9 @@ public interface BoardService {
 	
 	// 게시물 수정
 	public void modify(BoardVO vo) throws Exception;
+
+	// 게시물 수정
+	public void AddviewCountOne(BoardVO vo) throws Exception;
 	
 	// 게시물 삭제
 	public void delete(int bno) throws Exception;

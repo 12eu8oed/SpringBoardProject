@@ -48,7 +48,7 @@ public class BoardController {
 		vo.setContent(content);
 		
 		service.write(vo);
-		service.newviewCountGolist(vo);
+		service.newviewCountGolist(vo); // 새 게시물이  등록 되고 게시글 목록으로 돌아갈를 viewCount에 넣어준다.
 		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
 		// 왜 그냥 url 쓰면 안되나? redirect를 사용해야 하는 이유는?
 	}
@@ -60,6 +60,8 @@ public class BoardController {
 		
 		BoardVO vo = service.view(bno);
 		model.addAttribute("view", vo);
+		
+		service.AddviewCountOne(vo); // 게시물 조회수 +1
 	}
 	
 	// 게시물 수정
