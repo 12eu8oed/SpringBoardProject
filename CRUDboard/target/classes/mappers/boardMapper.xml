@@ -5,11 +5,16 @@
 <mapper namespace="com.board.mappers.board">   <!-- 이때, 네임스페이스(namespace)는 각각의 매퍼를 구분하는 고유명이 됩니다. -->
 
 	<!-- 게시물 목록 --> <!-- 테이블을 찾을 수 없다면, (데이버베이스.테이블) -->
-	<select id="list" resultType="com.board.domain.BoardVO">  <!-- resultType는 데이터를 쿼리를 실행한 뒤 결과가 있을 경우에 사용 -->
+	<select id="listPageSearch" resultType="com.board.domain.BoardVO">  <!-- resultType는 데이터를 쿼리를 실행한 뒤 결과가 있을 경우에 사용 -->
 		select
-			bno, title, content, writer, regDate, viewCnt
+			b.bno, b.title, b.content, b.writer, b.regDate, vc.viewCnt
 		from
-			board.tbl_board
+			board.tbl_board b
+		join board.tbl_view_count vc on b.bno = vc.bno
+<!-- 		select -->
+<!-- 			bno, title, content, writer, regDate, viewCnt -->
+<!-- 		from -->
+<!-- 			board.tbl_board -->
 	</select>
 
 
