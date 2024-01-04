@@ -65,7 +65,8 @@ public class BoardServiceImpl implements BoardService { // 정보 전달 용도
 	public List listPage(int displayPost, int postNum) throws Exception {
 		return dao.listPage(displayPost, postNum);
 	}
-
+	
+	// 게시물 목록 + 페이징 + 검색
 	@Override
 	public List<BoardVO> listPageSearch(
 			int displayPost, int postNum, String searchType, String keyword) throws Exception {

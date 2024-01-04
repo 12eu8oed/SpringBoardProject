@@ -5,7 +5,7 @@
 <mapper namespace="com.board.mappers.board">   <!-- 이때, 네임스페이스(namespace)는 각각의 매퍼를 구분하는 고유명이 됩니다. -->
 
 	<!-- 게시물 목록 --> <!-- 테이블을 찾을 수 없다면, (데이버베이스.테이블) -->
-	<select id="listPageSearch" resultType="com.board.domain.BoardVO">  <!-- resultType는 데이터를 쿼리를 실행한 뒤 결과가 있을 경우에 사용 -->
+	<select id="list" resultType="com.board.domain.BoardVO">  <!-- resultType는 데이터를 쿼리를 실행한 뒤 결과가 있을 경우에 사용 -->
 		select
 			b.bno, b.title, b.content, b.writer, b.regDate, vc.viewCnt
 		from
@@ -16,7 +16,6 @@
 <!-- 		from -->
 <!-- 			board.tbl_board -->
 	</select>
-
 
 	<!-- 새 게시물이  등록 되고 게시글 목록으로 돌아갈 때 새 글번호를 viewCount에 넣어준다.-->
 	<insert id="newviewCountGolist" parameterType="com.board.domain.BoardVO">
@@ -135,8 +134,10 @@
 	<!-- 게시물 목록 + 페이징 + 검색 -->
 	<select id="listPageSearch" parameterType="hashMap" resultType="com.board.domain.BoardVO">
 		select
-			bno, title, writer, regDate, viewCnt
-		from board.tbl_board
+			b.bno, b.title, b.content, b.writer, b.regDate, vc.viewCnt
+		from
+			board.tbl_board b
+		join board.tbl_view_count vc on b.bno = vc.bno
 
 		<if test='searchType.equals("title")'>
 			WHERE title LIKE concat('%', #{keyword}, '%')
