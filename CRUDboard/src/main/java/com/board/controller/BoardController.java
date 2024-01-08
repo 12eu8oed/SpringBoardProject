@@ -12,14 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.domain.BoardVO;
 import com.board.domain.Page;
+import com.board.domain.ReplyVO;
 import com.board.service.BoardService;
+import com.board.service.ReplyService;
 
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
 
 	@Inject
-	BoardService service;
+	private BoardService service;
+	
+	@Inject
+	private ReplyService replyService; //게시물과 댓글을 함께 읽어오는 방식으로 진행
+	
 	
 	// 게시물 목록
 	// GET 방식은 서버에서 정보를 조회할 때 주로 쓰이고, POST 방식은 정보를 수정하거나 입력할 때 사용
@@ -61,6 +67,11 @@ public class BoardController {
 		
 		BoardVO vo = service.view(bno);
 		model.addAttribute("view", vo);
+		
+		// 댓글 조회
+		List<ReplyVO> reply = null;
+		reply = replyService.list(bno);
+		model.addAttribute("reply", reply);
 		
 		service.AddviewCountOne(vo); // 게시물 조회수 +1
 	}
