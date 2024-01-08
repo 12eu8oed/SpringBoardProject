@@ -12,9 +12,9 @@
       <li class="nav-item mr-3">
         <a class="nav-link btn" style="background-color: #99CCFF;" href="/board/listPageSearch?num=1">글 목록(페이징+검색)</a>
       </li>
-      <li class="nav-item mr-3">
-        <a class="nav-link btn btn-primary" href="/board/listPage?num=1">글 목록(페이징)</a>
-      </li>
+<!--       <li class="nav-item mr-3"> -->
+<!--         <a class="nav-link btn btn-primary" href="/board/listPage?num=1">글 목록(페이징)</a> -->
+<!--       </li> -->
       <li class="nav-item mr-3">
         <a class="nav-link btn btn-info" href="/board/list">글 목록</a>
       </li>

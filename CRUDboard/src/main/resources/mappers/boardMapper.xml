@@ -123,11 +123,11 @@
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap" resultType="com.board.domain.BoardVO">
-	 select
-	 	bno, title, writer, regDate, viewCnt
-	 from board.tbl_board
-	 order by bno desc
-	 	limit #{displayPost}, #{postNum}
+	 	select
+			b.bno, b.title, b.content, b.writer, b.regDate, vc.viewCnt
+		from
+			board.tbl_board b
+		join board.tbl_view_count vc on b.bno = vc.bno
 	</select>
 
 	<!-- 게시물 목록 + 페이징 + 검색 -->

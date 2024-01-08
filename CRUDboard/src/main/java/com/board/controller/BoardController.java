@@ -33,7 +33,7 @@ public class BoardController {
 	// 게시글 작성 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
-  
+
 	}
 
 	// 스프링 게시판 만들기 #5. 무작정 베끼면 골로 간다.
@@ -48,7 +48,8 @@ public class BoardController {
 		vo.setContent(content);
 		
 		service.write(vo);
-		service.newviewCountGolist(vo); // 새 게시물이  등록 되고 게시글 목록으로 돌아갈를 viewCount에 넣어준다.
+		
+		service.newviewCountGolist(vo); // 새 게시물이  등록 되고 게시글 목록으로 돌아갈를 viewCount에 넣어준다. xml에서 테이블 분리가 필요하다.
 		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
 		// 왜 그냥 url 쓰면 안되나? redirect를 사용해야 하는 이유는?
 	}
