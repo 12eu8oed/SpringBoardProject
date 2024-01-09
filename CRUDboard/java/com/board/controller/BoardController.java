@@ -73,7 +73,6 @@ public class BoardController {
 		List<ReplyVO> reply = null;
 		reply = replyService.list(bno);
 		model.addAttribute("reply", reply); // Model 인스턴스에 'reply'라는 키로 댓글 목록을 저장. 뷰 페이지에서 'reply' 키를 이용해 댓글 데이터에 접근할 수 있음
-		System.out.println(reply.toString());
 		
 		service.AddviewCountOne(vo); // 조회 중인 게시글의 BoardVO 인스턴스를 매개변수로 하여 service의 AddviewCountOne 메서드를 호출, 게시글의 조회수를 1 증가시키는 로직 실행
 	}

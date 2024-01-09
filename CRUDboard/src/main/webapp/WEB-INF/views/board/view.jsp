@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -74,7 +76,7 @@
 		<div class="list-group">
 			<c:forEach items="${reply}" var="reply" >
 				<div class="list-group-item">
-					<h5 class="mb-1">${reply.writer.toString()} / ${reply.regDate}</h5>
+					<h5 class="mb-1">${reply.writer} / ${reply.regDate}</h5>
 					<p class="mb-1">${reply.content}</p>
 				</div>
 			</c:forEach>
