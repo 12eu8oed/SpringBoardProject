@@ -41,7 +41,6 @@ public class BoardDAOImpl implements BoardDAO { // Implement 구현하다 BoardD
 	@Override
 	public BoardVO view(int bno) throws Exception {
 		return sql.selectOne(namespace + ".view", bno);
-
 	}
 
 	// 게시물 조회수 하나 올리는 쿼리

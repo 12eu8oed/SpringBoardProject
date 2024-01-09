@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.taglibs.standard.lang.jstl.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,17 +64,18 @@ public class BoardController {
 	// 게시물 조회
 	// BoardVO를 이용하여 서비스(service)에서 데이터를 받고, 모델(model)을 이용하여 뷰(view)에 데이터를 넘겨줍니다. 이때, 넘겨주는 모델의 이름은 view입니다.
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
+	public void getView(@RequestParam("bno") int bno, Model model) throws Exception { // 요청에서 'bno'라는 이름의 파라미터 값을 정수형으로 받아오고, 뷰에 데이터를 전달할 Model 객체를 메서드의 파라미터로 선언
 		
-		BoardVO vo = service.view(bno);
-		model.addAttribute("view", vo);
+		BoardVO vo = service.view(bno); // 게시글 번호(bno)를 매개변수로 하여 service의 view 메서드를 호출, 게시글 정보가 담긴 BoardVO 인스턴스를 반환받음
+		model.addAttribute("view", vo); // Model 인스턴스에 'view'라는 키로 BoardVO 인스턴스를 저장. 이를 통해 뷰 페이지에서 'view' 키를 이용해 게시글 정보에 접근할 수 있음
 		
-		// 댓글 조회
+		//댓글 조회
 		List<ReplyVO> reply = null;
 		reply = replyService.list(bno);
-		model.addAttribute("reply", reply);
+		model.addAttribute("reply", reply); // Model 인스턴스에 'reply'라는 키로 댓글 목록을 저장. 뷰 페이지에서 'reply' 키를 이용해 댓글 데이터에 접근할 수 있음
+		System.out.println(reply.toString());
 		
-		service.AddviewCountOne(vo); // 게시물 조회수 +1
+		service.AddviewCountOne(vo); // 조회 중인 게시글의 BoardVO 인스턴스를 매개변수로 하여 service의 AddviewCountOne 메서드를 호출, 게시글의 조회수를 1 증가시키는 로직 실행
 	}
 	
 	// 게시물 수정

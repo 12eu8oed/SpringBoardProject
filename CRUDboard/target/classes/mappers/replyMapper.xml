@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.board.mappers.board">   <!-- 이때, 네임스페이스(namespace)는 각각의 매퍼를 구분하는 고유명이 됩니다. -->
+<mapper namespace="com.board.mappers.reply">   <!-- 이때, 네임스페이스(namespace)는 각각의 매퍼를 구분하는 고유명이 됩니다. -->
 	<!-- 댓글 조회 --> <!-- 목록을 가져와야 하니까 resultType이 필요하다. -->
 	<select id="replyList" parameterType="int" resultType="com.board.domain.ReplyVO">  
 		select
 			rno, bno, writer, content, regDate
 		from board.tbl_reply
-			where bno = #{bno}		
+			where bno = #{bno}
 	</select>
 	
 	<!-- 댓글 작성 -->

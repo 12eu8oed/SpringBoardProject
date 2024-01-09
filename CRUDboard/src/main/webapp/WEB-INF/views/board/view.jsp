@@ -53,35 +53,45 @@
 	<hr />
 	
 	<ul>
-		<div>
-			<p>첫번째 댓글 작성자</p>
-			<p>첫번째 댓글</p>
-		</div>
-	</li>
-	<li>
-		<div>
-			<p>두번째 댓글 작성자</p>
-			<p>두번째 댓글</p>
-		</div>
-	</li>
-	<li>
-		<div>
-			<p>세번째 댓글 작성자</p>
-			<p>세번째 댓글</p>
+<!-- 		<li> -->
+<!-- 			<div> -->
+<!-- 				<p>첫번째 댓글 작성자</p> -->
+<!-- 				<p>첫번째 댓글</p> -->
+<!-- 			</div> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<div> -->
+<!-- 				<p>두번째 댓글 작성자</p> -->
+<!-- 				<p>두번째 댓글</p> -->
+<!-- 			</div> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<div> -->
+<!-- 				<p>세번째 댓글 작성자</p> -->
+<!-- 				<p>세번째 댓글</p> -->
+<!-- 			</div> -->
+
+		<div class="list-group">
+			<c:forEach items="${reply}" var="reply" >
+				<div class="list-group-item">
+					<h5 class="mb-1">${reply.writer.toString()} / ${reply.regDate}</h5>
+					<p class="mb-1">${reply.content}</p>
+				</div>
+			</c:forEach>
 		</div>
 	</ul>
 	
-	<div>
-		<p>
-			<label>댓글 작성자</label> <input type="text">
-		</p>
-		<p>
-			<textarea rows="5" cols="50"></textarea>
-		</p>
-		<p>
-			<button type="button">댓글 작성</button>
-		</p>
-	</div>
+<div>
+	<p>
+		<label>댓글 작성자</label> <input type="text">
+	</p>
+	<p>
+		<textarea rows="5" cols="50"></textarea>
+	</p>
+	<p>
+		<button type="button">댓글 작성</button>
+	</p>
+</div>
 	
 	<!-- 댓글 끝 -->
 
