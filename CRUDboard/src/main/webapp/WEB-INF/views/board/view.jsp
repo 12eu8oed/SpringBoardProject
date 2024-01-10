@@ -74,7 +74,7 @@
 <!-- 			</div> -->
 
 		<div class="list-group">
-			<c:forEach items="${reply}" var="reply" >
+			<c:forEach items="${reply}" var="reply" > <!-- 댓글 작성시 필요한 데이터는 총 3개 bno, writer, content-->
 				<div class="list-group-item">
 					<p class="mb-1">작성자 : ${reply.writer} / 작성 날짜  : <fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" /></p>
 					<p class="mb-1">댓글내용 : ${reply.content}</p>
@@ -82,20 +82,26 @@
 			</c:forEach>
 		</div>
 	</ul>
-	
+
 <div>
-	<p>
-		<label>댓글 작성자</label> <input type="text">
-	</p>
-	<p>
-		<textarea rows="5" cols="50"></textarea>
-	</p>
-	<p>
-		<button type="button">댓글 작성</button>
-	</p>
-</div>
+
+	<form method="post" action="/reply/write"> <!-- 새로고침처럼 자기페이지로 값을 보내며 댓글작성 -->
 	
-	<!-- 댓글 끝 -->
+		<p>
+			<label>댓글 작성자</label> <input type="text" name="writer">
+		</p>
+		<p>
+			<textarea rows="5" cols="50" name="content"></textarea>
+		</p>
+		<p>
+			<input type="hidden" name="bno" value="${view.bno}">
+			<button type="submit">댓글 작성</button>
+		</p>
+	</form>
+	
+</div>
+
+<!-- 댓글 끝	 -->
 
 </body>
 </html>
