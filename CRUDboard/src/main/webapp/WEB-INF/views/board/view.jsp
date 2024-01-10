@@ -76,8 +76,8 @@
 		<div class="list-group">
 			<c:forEach items="${reply}" var="reply" >
 				<div class="list-group-item">
-					<h5 class="mb-1">${reply.writer} / ${reply.regDate}</h5>
-					<p class="mb-1">${reply.content}</p>
+					<p class="mb-1">작성자 : ${reply.writer} / 작성 날짜  : <fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" /></p>
+					<p class="mb-1">댓글내용 : ${reply.content}</p>
 				</div>
 			</c:forEach>
 		</div>
