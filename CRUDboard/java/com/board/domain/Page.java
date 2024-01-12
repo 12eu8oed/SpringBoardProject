@@ -1,6 +1,6 @@
 package com.board.domain;
 
-public class Page { // 페이징을 관리하는 클래스
+public class Page { // 페이징을 로직 클래스
 	// 현재 페이지 번호
 	private int num;
 

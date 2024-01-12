@@ -2,7 +2,7 @@ package com.board.domain;
 
 import java.util.Date;
 
-public class BoardVO { //Value Object의 첫 글자를 딴 약자로 VO는 그냥 값 그 자체
+public class BoardVO { //Value Object의 첫 글자를 딴 약자로 VO는 그냥 값 그 자체 
 	/* 테이블 입니다.
 	create table tbl_board(
 		  bno int not null auto_increment,
@@ -18,6 +18,9 @@ public class BoardVO { //Value Object의 첫 글자를 딴 약자로 VO는 그�
 	private int bno;
 	private String title;
 	private String content;
+	private String writer;
+	private Date regDate;
+	private int viewCnt;
 	
 	public int getBno() {
 		return bno;
@@ -37,8 +40,7 @@ public class BoardVO { //Value Object의 첫 글자를 딴 약자로 VO는 그�
 	public void setContent(String content) {
 		this.content = content;
 	}
-	////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////
+	
 	public String getWriter() {
 		return writer;
 	}
@@ -57,7 +59,4 @@ public class BoardVO { //Value Object의 첫 글자를 딴 약자로 VO는 그�
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
-	private String writer;
-	private Date regDate;
-	private int viewCnt;
 }

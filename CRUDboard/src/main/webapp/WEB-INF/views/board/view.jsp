@@ -78,6 +78,12 @@
 				<div class="list-group-item">
 					<p class="mb-1">작성자 : ${reply.writer} / 작성 날짜  : <fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" /></p>
 					<p class="mb-1">댓글내용 : ${reply.content}</p>
+					
+					<p>
+						<a href="">수정</a> / <a href="">삭제</a>
+					</p>
+								
+					<hr />
 				</div>
 			</c:forEach>
 		</div>
