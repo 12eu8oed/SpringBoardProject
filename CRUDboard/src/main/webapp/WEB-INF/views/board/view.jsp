@@ -80,16 +80,16 @@
 					<p class="mb-1">댓글내용 : ${reply.content}</p>
 					
 					<p>
-						<a href="">수정</a> / <a href="">삭제</a>
+						<a href="/reply/modify?bno=${view.bno}&rno=${reply.rno}">수정</a> / <a href="">삭제</a>
 					</p>
-								
+					
 					<hr />
 				</div>
 			</c:forEach>
 		</div>
 	</ul>
 
-<div>
+<div> <!-- 댓글작성부분 -->
 
 	<form method="post" action="/reply/write"> <!-- 새로고침처럼 자기페이지로 값을 보내며 댓글작성 -->
 	
