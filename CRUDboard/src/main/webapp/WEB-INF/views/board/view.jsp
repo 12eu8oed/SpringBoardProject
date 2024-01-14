@@ -77,7 +77,7 @@
 
 			<div class="card-footer text-right">
 				<a href="/board/modify?bno=${view.bno}" class="btn btn-info">게시물 수정</a>
-					 <a href="" class="btn btn-danger">게시물 삭제</a>
+				<a href="/board/delete?bno=${view.bno}" class="btn btn-danger">게시물 삭제</a>
 			</div>
 		</div>
 
