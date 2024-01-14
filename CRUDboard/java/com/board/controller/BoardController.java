@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.taglibs.standard.lang.jstl.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +42,6 @@ public class BoardController {
 
 	}
 
-	// 스프링 게시판 만들기 #5. 무작정 베끼면 골로 간다.
 	// 게시글 작성
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String postWrite(BoardVO vo) throws Exception {
@@ -100,7 +98,9 @@ public class BoardController {
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String getDelete(@RequestParam("bno") int bno) throws Exception {
 		
-		service.delete(bno);
+		// 게시글 삭제
+		service.deleteAllRepliesForPost(bno); //달려있는 모든 댓글 제거
+		service.delete(bno); //게시글 삭제
 		return "redirect:/board/listPageSearch?num=1";
 	}
 	

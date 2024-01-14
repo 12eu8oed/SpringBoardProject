@@ -91,7 +91,14 @@
 	<delete id="delete" parameterType="int">
 		delete
 			from board.tbl_board
-		where bno = #{bno}
+				where bno = #{bno}
+	</delete>
+	
+	<!-- 댓글 달린 게시물에 있는 모든 댓글 제거하는 쿼리 -->
+	<delete id="deleteAllRepliesForPost" parameterType="com.board.domain.ReplyVO">
+		delete 
+			from board.tbl_reply
+				where bno = #{bno}	
 	</delete>
 
 	<!-- 게시물 총 갯수 -->

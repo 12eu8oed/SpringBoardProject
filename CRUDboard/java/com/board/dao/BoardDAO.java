@@ -25,6 +25,9 @@ public interface BoardDAO {
 
 	// 게시뮬 삭제
 	public void delete(int bno) throws Exception;
+	
+	// 댓글 달린 게시물에 있는 모든 댓글 제거하는
+	public void deleteAllRepliesForPost(int bno) throws Exception;
 
 	// 게시물 총 갯수
 	public int count() throws Exception;

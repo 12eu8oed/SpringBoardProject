@@ -60,6 +60,12 @@ public class BoardDAOImpl implements BoardDAO { // Implement 구현하다 BoardD
 	public void delete(int bno) throws Exception {
 		sql.delete(namespace + ".delete", bno);
 	}
+	
+	// 댓글 달린 게시물에 있는 모든 댓글 제거함
+	@Override
+	public void deleteAllRepliesForPost(int bno) throws Exception {
+		sql.delete(namespace + ".deleteAllRepliesForPost", bno);
+	}
 
 	// 게시물 총 갯수
 	@Override

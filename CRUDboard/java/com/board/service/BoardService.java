@@ -21,11 +21,14 @@ public interface BoardService {
 	// 게시물 수정
 	public void modify(BoardVO vo) throws Exception;
 
-	// 게시물 수정
+	// 조회수 1증가
 	public void AddviewCountOne(BoardVO vo) throws Exception;
 	
 	// 게시물 삭제
 	public void delete(int bno) throws Exception;
+
+	// 게시물 삭제
+	public void deleteAllRepliesForPost(int bno) throws Exception;
 
 	// 게시물 총 갯수
 	public int count() throws Exception;
