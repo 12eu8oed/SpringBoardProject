@@ -1,6 +1,13 @@
 # SpringBoardProject_v1
 
-스프링 프레임워크를 활용해 만든 CRUD 기능이 포함된 프로젝트입니다.
+## 사용 스킬
+- **Java**
+- **Jsp**
+- **Spring**
+- **JavaScript**
+- **JQeury**
+- **Mybatis**
+- **MariaDB**
 
 ## 구현 기능
 
