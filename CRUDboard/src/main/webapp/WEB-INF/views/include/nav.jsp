@@ -24,17 +24,13 @@
     </ul>
   </div>
 </nav>
-<!-- <ul> 
 
-	<li>
-		<a href="/board/listPage?num=1">글 목록(페이징)</a> 
-	</li>
-
-	<li>
-		<a href="/board/list">글 목록</a> 
-	</li>
- 
-	<li>
-		<a href="/board/write">글 작성</a> 
-	</li> 
-</ul> -->
+   <!-- Right-aligned login form and signup button -->
+ 	<div class="top-right">
+        <form class="form-inline">
+            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Username">
+            <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Password">
+            <button type="submit" class="btn btn-primary mb-2">로그인</button>
+        </form>
+    	<button class="btn btn-secondary">회원가입</button>
+	</div>
