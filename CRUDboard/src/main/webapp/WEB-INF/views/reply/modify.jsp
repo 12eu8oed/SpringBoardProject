@@ -25,25 +25,26 @@
 </head>
 <body>  
 
-<div>
-
-	<form method="post" action="/reply/modify"> <!-- 새로고침처럼 자기페이지로 값을 보내며 댓글작성 -->
-	
-		<p>
-			<label>댓글 작성자</label> <input type="text" name="writer" readonly="readonly" value="${reply.writer}">
-		</p>
-		<p>
-			<textarea rows="5" cols="50" name="content">${reply.content}</textarea>
-		</p>
-		<p>
-			<input type="hidden" name="bno" value="${reply.bno}">
-			<input type="hidden" name="rno" value="${reply.rno}">
-			
-			<button type="submit">댓글 작성</button>
-		</p>
-	</form>
-	
+<div id="nav" class="navbar navbar-light" style="background-color: #4c4c4c;">
+	<%@ include file="../include/nav.jsp" %>  
 </div>
+
+<div class="container mt-5">
+	<form method="post" action="/reply/modify" class="mb-4">
+        <div class="form-group">
+            <label for="writer">댓글 작성자</label>
+            <input type="text" class="form-control" id="writer" name="writer" readonly value="${reply.writer}">
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" id="content" rows="5" name="content">${reply.content}</textarea>
+        </div>
+        <input type="hidden" name="bno" value="${reply.bno}">
+        <input type="hidden" name="rno" value="${reply.rno}">
+        <button type="submit" class="btn btn-primary">댓글 작성</button>
+    </form>
+</div>
+
 
 <!-- 댓글 끝	 -->
 
