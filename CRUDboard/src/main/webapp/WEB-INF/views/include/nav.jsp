@@ -31,6 +31,8 @@
             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Username">
             <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Password">
             <button type="submit" class="btn btn-primary mb-2">로그인</button>
+			<button type="button"class="btn btn-secondary">회원가입</button>
         </form>
-    	<button class="btn btn-secondary">회원가입</button>
 	</div>
+
+	
