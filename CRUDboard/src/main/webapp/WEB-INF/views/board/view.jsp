@@ -77,7 +77,8 @@
 
 			<div class="card-footer text-right">
 				<a href="/board/modify?bno=${view.bno}" class="btn btn-info">게시물 수정</a>
-				<a href="/board/delete?bno=${view.bno}" class="btn btn-danger">게시물 삭제</a>
+				<a href="/board/delete?bno=${view.bno}" class="btn btn-danger" 
+					onclick="return confirm('정말 삭제하시겠습니까?')">게시물 삭제</a>
 			</div>
 		</div>
 
@@ -127,7 +128,5 @@
 			</form>
 		</div>
 	</div>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

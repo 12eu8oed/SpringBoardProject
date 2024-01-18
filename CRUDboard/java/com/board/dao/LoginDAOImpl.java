@@ -12,7 +12,9 @@ import com.board.domain.BoardVO;
 
 @Repository
 public class LoginDAOImpl implements LoginDAO { // Implement 구현하다 BoardDAO의 구현클래스 이다, DB쪽 구현체
-
+	
+	// 로그인 
+	
 	@Inject
 	private SqlSession sql;
 
