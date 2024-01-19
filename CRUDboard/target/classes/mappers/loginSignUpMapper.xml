@@ -10,35 +10,4 @@
 		from board.tbl_reply
 			where bno = #{bno}
 	</select>
-	
-	<!-- 댓글 작성 -->
-	<insert id="replyWrite" parameterType="com.board.domain.ReplyVO">
-		insert into board.tbl_reply(bno, writer, content, regDate)
-			value(#{bno}, #{writer}, #{content}, #{regDate})
-	</insert>
-		
-	<!-- 댓글 수정 -->
-	<update id="replyModify" parameterType="com.board.domain.ReplyVO">
-		update board.tbl_reply set
-			writer = #{writer},
-			content = #{content}
-		where rno = #{rno}
-			and bno = #{bno}	
-	</update>
-	
-	<!-- 댓글 삭제 -->
-	<delete id="replyDelete" parameterType="com.board.domain.ReplyVO">
-		delete from board.tbl_reply
-		where rno = #{rno}
-			and bno = ${bno}	
-	</delete>
-	
-	<!-- 단일 댓글 조회 -->
-	<select id="replySelect" parameterType="com.board.domain.ReplyVO" resultType="com.board.domain.ReplyVO">
-		select
-			rno, bno, writer, content, regDate
-		from board.tbl_reply
-			where bno = #{bno}
-			and rno = #{rno}			
-	</select>
 </mapper>
