@@ -23,4 +23,5 @@
 - ( 회원가입/로그인 구현중... )
  
 ## 메인 화면
-![image](https://github.com/12eu8oed/SpringBoardProject_v1/assets/150359214/ca63bf47-c558-4078-88b2-17cfa3a8bd18)
+![image](https://github.com/12eu8oed/SpringBoardProject_v1/assets/150359214/a1ca764b-3d6a-4a01-b067-f3a8365df094)
+
