@@ -61,12 +61,6 @@
 		join board.tbl_view_count vc on b.bno = vc.bno
 			where
 		b.bno = #{bno}
-<!-- 		select -->
-<!-- 			* -->
-<!-- 		from -->
-<!-- 			board.tbl_board  -->
-<!-- 		where -->
-<!-- 			bno = #{bno} -->
 	</select>
 	
 	<!-- 게시물 조회수 하나 올리는 쿼리 -->
