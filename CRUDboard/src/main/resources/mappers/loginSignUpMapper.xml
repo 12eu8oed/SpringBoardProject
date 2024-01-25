@@ -8,10 +8,10 @@
 <!-- 	SELECT mno, id, `password`, writer, regDate -->  
 <!-- 		FROM board.tbl_member -->
 <!-- 			WHERE id = 'kwww69' AND `password` = '123456'; -->
-	<select id="login" parameterType="com.board.domain.MemberVO" resultType="com.board.domain.MemberVO">  				
+	<select id="login" parameterType="String" resultType="com.board.domain.MemberVO">  				
 		SELECT mno, id, `password`, writer, regDate
 			FROM board.tbl_member
-				WHERE id = #{id} AND `password` = #{password};
+				WHERE id = #{id};
 	</select>
 
 </mapper>

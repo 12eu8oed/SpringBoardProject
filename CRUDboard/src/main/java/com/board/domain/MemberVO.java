@@ -23,6 +23,7 @@ public class MemberVO {
 	public void setMno(int mno) {
 		this.mno = mno;
 	}
+
 	public String getId() {
 		return id;
 	}
@@ -46,6 +47,11 @@ public class MemberVO {
 	}
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+	@Override
+	public String toString() {
+		return "MemberVO [mno=" + mno + ", id=" + id + ", password=" + password + ", writer=" + writer + ", regDate="
+				+ regDate + "]";
 	}
 
 }

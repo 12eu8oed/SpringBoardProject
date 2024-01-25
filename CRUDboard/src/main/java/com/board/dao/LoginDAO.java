@@ -6,5 +6,5 @@ import com.board.domain.MemberVO;
 public interface LoginDAO {
 	
 	// 로그인
-	public MemberVO login(String id, String password) throws Exception;
+	public MemberVO login(String id) throws Exception;
 }
