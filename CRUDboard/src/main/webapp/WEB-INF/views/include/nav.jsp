@@ -44,7 +44,7 @@
 		                <input type="text" name="id" class="form-control mb-2 mr-sm-2" placeholder="아이디">
 		                <input type="password" name="password" class="form-control mb-2 mr-sm-2" placeholder="비밀번호">
 		                <button type="submit" class="btn btn-primary mb-2 mr-sm-2">로그인</button>
-		                <a class="btn btn-warning mb-2 mr-sm-2"  href="/signUp/signUp">회원가입</a>
+		                <a class="btn btn-warning mb-2 mr-sm-2" href="${pageContext.request.contextPath}/signUp">회원가입</a>
 		            </form>
 		        </c:otherwise>
 		    </c:choose>

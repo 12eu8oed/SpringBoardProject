@@ -36,5 +36,17 @@ public class LoginServiceImpl implements LoginService { // 정보 전달 용도
 		return null;
 
 	}
+	
+	// 회원가입 부분, 회원 등록
+	@Override
+	public void signUp(MemberVO vo) throws Exception {
+		// 비밀번호 해싱
+		String encryptedPassword = passwordEncoder.encode(vo.getPassword());
+		vo.setPassword(encryptedPassword);
+		
+		// 회원 정보 데이터베이스에 저장
+		dao.signUp(vo);
+	}
+	
 
 }
