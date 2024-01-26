@@ -11,25 +11,30 @@ import com.board.domain.MemberVO;
 public class LoginServiceImpl implements LoginService { // 정보 전달 용도
 
 	@Autowired
-    private LoginDAO dao;
+	private LoginDAO dao;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
-	
-	// 로그인 
+	// 로그인
 	@Override
 	public MemberVO login(String id, String rawpassword) throws Exception {
+		System.out.println("로그인 시도: ID = " + id); // 디버깅 메시지 1
 		MemberVO vo = dao.login(id);
-		
-		if (vo != null && passwordEncoder.matches(rawpassword, vo.getPassword())) {
-            // 비밀번호 일치
-            return vo;
-        }
-        // 비밀번호 불일치 또는 사용자 없음
-        return null;
-	
+
+		if (vo == null) {
+			System.out.println("로그인 실패: 사용자를 찾을 수 없음"); // 디버깅 메시지 2
+			return null;
+		}
+
+		if (passwordEncoder.matches(rawpassword, vo.getPassword())) {
+			System.out.println("로그인 성공: 사용자 = " + vo.getWriter()); // 디버깅 메시지 3
+			return vo;
+		}
+
+		System.out.println("로그인 실패: 비밀번호 불일치"); // 디버깅 메시지 4
+		return null;
+
 	}
 
-	
 }
