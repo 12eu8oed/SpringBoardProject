@@ -27,25 +27,27 @@
 	  </div>
 	</nav>
 	
-	<!-- 테스트중 -->
 	<!-- 로그인 섹션 -->
 	<div class="top-right">
 		<div>
 		    <c:choose>
 		        <c:when test="${not empty sessionScope.vo}">
 		            <!-- 로그인 성공 시 표시될 환영 메시지 -->
-		            <div class="alert alert-success">
-		                ${sessionScope.vo.writer}님 반갑습니다!
-		            </div>
+		            	<div class="d-flex align-items-center">
+               	 			<div class="alert alert-success mb-0">
+                    			${sessionScope.vo.writer}님 반갑습니다!
+                			</div>
+                			<a class="btn btn-warning ml-2" href="/userInfo">사용자 정보</a>
+            			</div>
 		        </c:when>
 		        <c:otherwise>
-		            <!-- 로그인 폼 -->
-		            <form class="form-inline" action="${pageContext.request.contextPath}/login" method="POST">
-		                <input type="text" name="id" class="form-control mb-2 mr-sm-2" placeholder="아이디">
-		                <input type="password" name="password" class="form-control mb-2 mr-sm-2" placeholder="비밀번호">
-		                <button type="submit" class="btn btn-primary mb-2 mr-sm-2">로그인</button>
-		                <a class="btn btn-warning mb-2 mr-sm-2" href="${pageContext.request.contextPath}/signUp">회원가입</a>
-		            </form>
+			            <!-- 로그인 폼 -->
+			            <form class="form-inline" action="/login" method="POST">
+			                <input type="text" name="id" class="form-control mb-2 mr-sm-2" placeholder="아이디">
+			                <input type="password" name="password" class="form-control mb-2 mr-sm-2" placeholder="비밀번호">
+			                <button type="submit" class="btn btn-primary mb-2 mr-sm-2">로그인</button>
+			                <a class="btn btn-warning mb-2 mr-sm-2" href="/signUp">회원가입</a>
+			            </form>
 		        </c:otherwise>
 		    </c:choose>
 		</div>
@@ -57,6 +59,3 @@
 		    </div>
 		</c:if>		
 	</div>
-	
-	<!-- 회원가입 -->
-<!-- 	<a class="nav-link btn btn-warning" ">회원 가입</a> -->
