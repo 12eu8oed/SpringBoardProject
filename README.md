@@ -24,4 +24,5 @@
  
 ## 메인 화면
 ![image](https://github.com/12eu8oed/SpringBoardProject_v1/assets/150359214/a1ca764b-3d6a-4a01-b067-f3a8365df094)
-
+### 로그인한 화면 
+![image](https://github.com/12eu8oed/SpringBoardProject_v1/assets/150359214/6181bb71-fb0e-4d29-ace1-5653092efae5)
