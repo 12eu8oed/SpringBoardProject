@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,12 @@ $(document).ready(function() {
         
         <div class="form-group">
             <label for="writer">작성자</label>
-            <input type="text" class="form-control" id="writer" name="writer">
+            <c:if test="${not empty sessionScope.vo}">
+	            <input type="text" class="form-control" id="writer" name="writer" value="${sessionScope.vo.writer}" readonly>       
+            </c:if>
+            <c:if test="${empty sessionScope.vo}">
+	            <input type="text" class="form-control" id="writer" name="writer">       
+            </c:if>
         </div>
         
         <div class="form-group">

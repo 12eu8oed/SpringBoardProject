@@ -1,5 +1,8 @@
 package com.board.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -25,18 +28,40 @@ public class LoginController {
 			HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
 
 		MemberVO vo = loginService.login(id, password);
-
+		String formattedNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); //실시간 시간 표시
+		
 		if (vo != null) {
 			session.setAttribute("vo", vo);
+			System.out.println("사용자 로그인: " + vo.getId() + " " + formattedNow); //login log
+			
 			return "redirect:/board/listPageSearch?num=1"; // 로그인 성공후 메인 페이지로 리다이렉트
 
 		} else {
 			redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 올바르지 않습니다.");
+			System.out.println("사용자 로그인 실패");
+			
 			return "redirect:/board/listPageSearch?num=1";
-//			session.setAttribute("loginError", "아이디 또는 비밀번호가 올바르지않습니다.");
-//			return "redirect:/board/listPageSearch?num=1"; //로그인 실패
 		}
-
+	}
+	
+	// 사용자 로그아웃
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {		
+		MemberVO vo = (MemberVO) session.getAttribute("vo");		
+		String formattedNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); //실시간 시간 표시
+		
+		if (vo != null) {
+			System.out.println("사용자 로그아웃: " + vo.getId() + " " + formattedNow); //logout log
+		}
+		
+		session.invalidate(); //logout
+		return "redirect:/board/listPageSearch?num=1";
+	}
+	
+	// 사용자 정보로 넘겨주는 메소드
+	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+	public String userInfoGet() {
+		return "signUp/userInfo"; //회원가입 폼 경로
 	}
 	
 	// 회원가입 폼으로 넘겨주는 메소드
@@ -47,7 +72,7 @@ public class LoginController {
 	
 	// 회원가입 처리를 하는 메소드
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public String signUpPost(@ModelAttribute("vo") MemberVO vo, RedirectAttributes redirectAttributes) {
+	public String signUpPost(MemberVO vo, RedirectAttributes redirectAttributes) {
 		try {
 			loginService.signUp(vo);
 			redirectAttributes.addFlashAttribute("message", "회원가입에 성공했습니다.");

@@ -1,11 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>사용자 정보</title>
-    <!-- 부트스트랩 CSS 연결 -->
+    <meta charset="UTF-8">
+    <title>사용자 프로필</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .profile-container {
+            max-width: 600px;
+            margin: auto;
+            padding-top: 20px;
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .profile-header h3 {
+            margin-bottom: 5px;
+        }
+        .profile-stats {
+            margin-bottom: 20px;
+        }
+        .profile-stats div {
+            margin-bottom: 10px;
+        }
+        .profile-content {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,29 +46,22 @@
 	<%@ include file="../include/nav.jsp" %>  
 </div>
 
-	<div class="container">
-    <h2 class="mt-5">회원가입</h2>
-    <form action="${pageContext.request.contextPath}/signUp" method="post">
-        <div class="form-group">
-            <label for="id">아이디</label>
-            <input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" required>
-        </div>
-        <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
-        </div>
-        <div class="form-group">
-            <label for="writer">닉네임</label>
-            <input type="text" class="form-control" id="writer" name="writer" placeholder="닉네임을 입력하세요" required>
-        </div>
-        <button type="submit" class="btn btn-primary">회원가입</button>
-    </form>
+<div class="container profile-container">
+    <div class="profile-header">
+        <img src="path_to_profile_image.jpg" alt="프로필 이미지">
+        <h3>${sessionScope.vo.writer}</h3>
+        <p>계정 만든 날짜 및 시간: <fmt:formatDate value="${sessionScope.vo.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+    </div>
+    <div class="profile-stats">
+        <div>게시물 수: 구현중...</div>
+        <div>팔로워 수: 구현중...</div>
+    </div>
+    <div class="profile-content">
+        <p>여기에 사용자에 대한 세부 정보를 추가할 수 있습니다.</p>
+    </div>
 </div>
 
-<!-- 부트스트랩 JS 연결 -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

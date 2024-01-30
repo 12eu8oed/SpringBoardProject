@@ -50,7 +50,12 @@ body {
         </div>
         <div class="form-group">
             <label for="writer">작성자</label>
-            <input type="text" class="form-control" id="writer" name="writer" value="${view.writer}">
+            <c:if test="${not empty sessionScope.vo}">
+	            <input type="text" class="form-control" id="writer" name="writer" value="${sessionScope.vo.writer}" readonly>       
+            </c:if>
+            <c:if test="${empty sessionScope.vo}">
+	            <input type="text" class="form-control" id="writer" name="writer" value="${view.writer}">       
+            </c:if>
         </div>
         <div class="form-group">
             <label for="content">내용</label>

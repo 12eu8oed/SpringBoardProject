@@ -8,6 +8,7 @@ public class MemberVO {
 //			`id` VARCHAR(50) NOT NULL, 
 //			`password` VARCHAR(255) NOT NULL,
 //			`writer` VARCHAR(30) NOT NULL,
+//			`profileImage` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb3_general_ci', //프로필 사진 저장되는 경로
 //			`regDate` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
 //			PRIMARY KEY (mno)
 //		);
@@ -15,6 +16,7 @@ public class MemberVO {
 	private String id;
 	private String password;
 	private String writer;
+	private String profileImage;
 	private Date regDate;
 	
 	public int getMno() {
@@ -36,6 +38,12 @@ public class MemberVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getProfileImage() {
+		return writer;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
 	public String getWriter() {
 		return writer;
 	}
@@ -47,11 +55,6 @@ public class MemberVO {
 	}
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
-	}
-	@Override
-	public String toString() {
-		return "MemberVO [mno=" + mno + ", id=" + id + ", password=" + password + ", writer=" + writer + ", regDate="
-				+ regDate + "]";
 	}
 
 }

@@ -38,6 +38,7 @@
                     			${sessionScope.vo.writer}님 반갑습니다!
                 			</div>
                 			<a class="btn btn-warning ml-2" href="/userInfo">사용자 정보</a>
+                			<a class="btn ml-2" style="background-color: #E75D6C;" href="/logout">로그아웃</a>
             			</div>
 		        </c:when>
 		        <c:otherwise>
@@ -53,9 +54,9 @@
 		</div>
 		
 		<!-- 로그인 오류 메시지 -->
-		<c:if test="${not empty sessionScope.loginError}">
-		    <div class="alert alert-danger" role="alert">
-		        ${requestScope.loginError}
-		    </div>
-		</c:if>		
+	    <c:if test="${not empty requestScope.loginError}">
+	        <div class="alert alert-danger" role="alert">
+	            ${requestScope.loginError}
+	        </div>
+	    </c:if>  	
 	</div>
