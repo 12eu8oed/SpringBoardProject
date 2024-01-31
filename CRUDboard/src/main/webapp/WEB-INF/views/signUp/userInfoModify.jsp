@@ -50,9 +50,8 @@
     <div class="profile-header">
         <img src="path_to_profile_image.jpg" alt="프로필 이미지">
         <h3>${sessionScope.vo.writer}</h3>
-			<p>계정 만든 날짜 및 시간: <fmt:formatDate value="${sessionScope.vo.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-				<a class="" href="/signUp/userInfoModify">사용자 정보 수정</a>
-			</p>
+        <p>계정 만든 날짜 및 시간: <fmt:formatDate value="${sessionScope.vo.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+        <a class="nav-link btn btn-info" href="/signUp/userInfoModify">사용자 정보 수정</a>
     </div>
     <div class="profile-stats">
         <div>게시물 수: 구현중...</div>
