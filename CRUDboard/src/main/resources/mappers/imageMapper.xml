@@ -12,7 +12,7 @@
 			(#{bno},#{filePath})
 	</insert>
 	
-	<!-- 회원가입 쿼리 -->
+	<!-- 사용자 프로필사진 업로드 하는 쿼리 -->
 	<insert id="signUp" parameterType="com.board.domain.MemberVO">
 		insert into board.tbl_member(id, password, writer, regDate)
 		values (#{id}, #{password}, #{writer}, NOW());

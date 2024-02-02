@@ -39,7 +39,7 @@ public class BoardController {
 	// 게시글 작성 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
-
+		
 	}
 
 	// 게시글 작성

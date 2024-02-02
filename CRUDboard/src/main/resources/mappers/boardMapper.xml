@@ -19,7 +19,7 @@
 
 	<!--  때 새 글번호새 게시물이  등록 되고 게시글 목록으로 돌아갈를 viewCount에 넣어준다.-->
 	<insert id="newviewCountGolist" parameterType="com.board.domain.BoardVO">
-		INSERT INTO board.tbl_view_count 
+		INSERT INTO board.tbl_view_count
 			(bno, viewCnt)
 		VALUES
 			((SELECT MAX(bno) FROM board.tbl_board), 0)
