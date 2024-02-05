@@ -37,7 +37,7 @@
 </div>
 
 <div class="container mt-4">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     
         <div class="form-group">
             <label for="title">제목</label>
@@ -59,7 +59,7 @@
             <textarea class="form-control" id="content" name="content" rows="5"></textarea>
         </div>
 
-		<!-- Update this part for file upload -->
+		<!-- 사진 첨부 -->
         <div class="form-group">
             <label for="photo">사진 및 파일 첨부</label>
             <input type="file" class="form-control-file" id="filePath" name="filePath">

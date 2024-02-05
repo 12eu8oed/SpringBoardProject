@@ -18,5 +18,4 @@
 			set profile_image = #{profileImage} WHERE mno = #{mno};
 	</update>
 	
-	
 </mapper>
