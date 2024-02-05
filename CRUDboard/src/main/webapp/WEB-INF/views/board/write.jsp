@@ -58,7 +58,13 @@
             <label for="content">내용</label>
             <textarea class="form-control" id="content" name="content" rows="5"></textarea>
         </div>
-        
+
+		<!-- Update this part for file upload -->
+        <div class="form-group">
+            <label for="photo">사진 및 파일 첨부</label>
+            <input type="file" class="form-control-file" id="filePath" name="filePath">
+        </div>
+                
         <button type="submit" class="btn btn-outline-primary">작성</button>
     </form>
 </div>
