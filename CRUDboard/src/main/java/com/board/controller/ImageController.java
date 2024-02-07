@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.board.service.ImageService;
 
 @Controller
-@RequestMapping("/board/*")
+//@RequestMapping("/board/*")
 public class ImageController {
 	
 	
@@ -21,7 +21,10 @@ public class ImageController {
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
     public String insertBoardImage(@RequestParam("filePath") MultipartFile file, Model model) {
 		
-		return null;
+		System.out.println("ImageController Log");
+		
+		return "redirect:/board/listPageSearch?num=1";
+
 	}
 
 }
