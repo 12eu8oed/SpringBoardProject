@@ -21,9 +21,6 @@ public class ImageController {
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
     public String insertBoardImage(@RequestParam("filePath") MultipartFile file, Model model) {
 		
-		
-		
-		
 		return null;
 	}
 
