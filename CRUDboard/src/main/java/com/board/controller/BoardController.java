@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,21 +42,21 @@ public class BoardController {
 		
 	}
 
-//	// 게시글 작성
-//	@RequestMapping(value = "/write", method = RequestMethod.POST)
-//	public String postWrite(BoardVO vo) throws Exception {
-//		
-//		// 줄바꿈 문자를 <br/>로 변환합니다.
-//		String content = vo.getContent().replace("\n", "<br/>");
-//		
-//		// 변환한 내용을 다시 vo에 설정합니다.
-//		vo.setContent(content);
-//		
-//		service.write(vo);
-//		
-//		service.newviewCountGolist(vo); // 새 게시물이  등록 되고 게시글 목록으로 돌아갈를 viewCount에 넣어준다. xml에서 테이블 분리가 필요하다.
-//		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
-//	}
+	// 게시글 작성
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String postWrite(BoardVO vo) throws Exception {
+		
+		// 줄바꿈 문자를 <br/>로 변환합니다.
+		String content = vo.getContent().replace("\n", "<br/>");
+		
+		// 변환한 내용을 다시 vo에 설정합니다.
+		vo.setContent(content);
+		
+		service.write(vo);
+		
+		service.newviewCountGolist(vo); // 새 게시물이  등록 되고 게시글 목록으로 돌아갈를 viewCount에 넣어준다. xml에서 테이블 분리가 필요하다.
+		return "redirect:/board/listPageSearch?num=1"; // 모든 작업을 마치고 /board/list, 즉 게시물 목록 화면으로 이동하겠다는 의미
+	}
 
 	// 게시물 조회 와 댓글 조회
 	// BoardVO를 이용하여 서비스(service)에서 데이터를 받고, 모델(model)을 이용하여 뷰(view)에 데이터를 넘겨줍니다. 이때, 넘겨주는 모델의 이름은 view입니다.
@@ -156,21 +154,21 @@ public class BoardController {
 
 	}
 	
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public ResponseEntity<?> postForm(BoardVO vo, @RequestParam("imagePath") String imagePath) {
-		try {
-			// 이미지 경로 처리 로직 추가
-			// 예: vo.setImagePath(imagePath);
-
-			service.write(vo); // 게시글 정보 저장
-
-			// 성공 응답
-			return new ResponseEntity<String>("게시글 작성 성공", HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			// 실패 응답
-			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-		}
-	}
+//	@RequestMapping(value = "/write", method = RequestMethod.POST)
+//	public ResponseEntity<?> postForm(BoardVO vo, @RequestParam("imagePath") String imagePath) {
+//		try {
+//			// 이미지 경로 처리 로직 추가
+//			// 예: vo.setImagePath(imagePath);
+//
+//			service.write(vo); // 게시글 정보 저장
+//
+//			// 성공 응답
+//			return new ResponseEntity<String>("게시글 작성 성공", HttpStatus.OK);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			// 실패 응답
+//			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+//		}
+//	}
 
 }
