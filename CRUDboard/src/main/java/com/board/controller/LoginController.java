@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.board.domain.MemberVO;
 import com.board.service.LoginService;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
+@Log4j
 public class LoginController {
 
 	@Inject
@@ -32,13 +34,13 @@ public class LoginController {
 		
 		if (vo != null) {
 			session.setAttribute("vo", vo);
-			System.out.println("사용자 로그인: " + vo.getId() + " " + formattedNow); //login log
+			log.info("사용자 로그인: " + vo.getId() + " " + formattedNow); //login log
 			
 			return "redirect:/board/listPageSearch?num=1"; // 로그인 성공후 메인 페이지로 리다이렉트
 
 		} else {
 			redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 올바르지 않습니다.");
-			System.out.println("사용자 로그인 실패");
+			log.info("사용자 로그인 실패");
 			
 			return "redirect:/board/listPageSearch?num=1";
 		}
@@ -51,7 +53,7 @@ public class LoginController {
 		String formattedNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); //실시간 시간 표시
 		
 		if (vo != null) {
-			System.out.println("사용자 로그아웃: " + vo.getId() + " " + formattedNow); //logout log
+			log.info("사용자 로그아웃: " + vo.getId() + " " + formattedNow); //logout log
 		}
 		
 		session.invalidate(); //logout

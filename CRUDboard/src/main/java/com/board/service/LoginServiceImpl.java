@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 import com.board.dao.LoginDAO;
 import com.board.domain.MemberVO;
 
+import lombok.extern.log4j.Log4j;
+
 @Service
+@Log4j
 public class LoginServiceImpl implements LoginService { // 정보 전달 용도
 
 	@Autowired
@@ -19,20 +22,20 @@ public class LoginServiceImpl implements LoginService { // 정보 전달 용도
 	// 로그인
 	@Override
 	public MemberVO login(String id, String rawpassword) throws Exception {
-		System.out.println("로그인 시도: ID = " + id); // 디버깅 메시지 1
+		log.info("로그인 시도: ID = " + id); // 디버깅 메시지 1
 		MemberVO vo = dao.login(id);
 
 		if (vo == null) {
-			System.out.println("로그인 실패: 사용자를 찾을 수 없음"); // 디버깅 메시지 2
+			log.info("로그인 실패: 사용자를 찾을 수 없음"); // 디버깅 메시지 2
 			return null;
 		}
 
 		if (passwordEncoder.matches(rawpassword, vo.getPassword())) {
-			System.out.println("로그인 성공: 사용자 = " + vo.getWriter()); // 디버깅 메시지 3
+			log.info("로그인 성공: 사용자 = " + vo.getWriter()); // 디버깅 메시지 3
 			return vo;
 		}
 
-		System.out.println("로그인 실패: 비밀번호 불일치"); // 디버깅 메시지 4
+		log.info("로그인 실패: 비밀번호 불일치"); // 디버깅 메시지 4
 		return null;
 
 	}
