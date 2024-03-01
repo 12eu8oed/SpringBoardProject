@@ -99,7 +99,7 @@
 						<a href="/reply/modify?bno=${view.bno}&rno=${reply.rno}" 
 							class="btn btn-outline-secondary btn-sm" 
 								style="background-color: #a4f081; color: black;">수정</a>
-
+								
 						<a href="/reply/delete?bno=${reply.bno}&rno=${reply.rno}" 
 							class="btn btn-outline-secondary btn-sm" 
 								style="background-color: #e85693; color: black;">삭제</a>
