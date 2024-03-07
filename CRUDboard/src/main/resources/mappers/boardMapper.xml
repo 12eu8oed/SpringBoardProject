@@ -96,9 +96,9 @@
 	</delete>
 
 	<!-- 게시물 총 갯수 -->
-	<select id="count" resultType="int">
+	<!-- <select id="count" resultType="int">
 		select count(bno) from board.tbl_board
-	</select>
+	</select> -->
 
 	<!-- 게시물 총 갯수 + 검색 적용 -->
 	<select id="searchCount" parameterType="hashMap" resultType="int">
